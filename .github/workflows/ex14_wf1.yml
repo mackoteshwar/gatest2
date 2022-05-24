@@ -6,11 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: setvar
-        run: echo "SOMEVAR=hello" > $GITHUB_ENV
-			
+        run: echo "SOMEVAR=hello" > $GITHUB_ENV		
   use_variable:
-	runs-on: ubuntu-latest
-	needs: initialize_variable
-	steps:
-		- name: usevar
-		  run: echo "var is ${{ env.SOMEVAR }}"
+    runs-on: ubuntu-latest
+    needs: initialize_variable
+    steps:
+      - name: usevar
+        run: echo "var is ${{ env.SOMEVAR }}"
