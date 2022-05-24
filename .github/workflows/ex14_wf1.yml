@@ -6,9 +6,14 @@ env:
 jobs:
   initialize_variable:
     runs-on: ubuntu-latest
+    env:
+      SOMEVAR: New2
     outputs:
       output1: ${{ steps.step3.outputs.o1 }}
     steps:
+      - name: usevar
+        id: step0
+        run: echo "var is ${{ env.SOMEVAR }}"
       - name: setvar
         id: step1
         run: echo "SOMEVAR=hello" >> $GITHUB_ENV	
