@@ -27,8 +27,4 @@ jobs:
         run: echo "var is ${{ env.SOMEVAR }}"
       - name: useoutput
         id: step2
-	run: echo "output is ${{ needs.initialize_variable.outputs.output1 }}"
-	
-	
-	
-	
+        run: echo "output is ${{ needs.initialize_variable.outputs.output1 }}"
