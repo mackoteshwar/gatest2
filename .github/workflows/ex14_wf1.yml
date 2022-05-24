@@ -10,7 +10,7 @@ jobs:
       output1: ${{ steps.step3.outputs.o1 }}
     steps:
       - name: setvar
-		 id: step1
+        id: step1
         run: echo "SOMEVAR=hello" >> $GITHUB_ENV	
       - name: usevar
         id: step2
@@ -25,6 +25,8 @@ jobs:
       - name: useenvvar
         id: step1
         run: echo "var is ${{ env.SOMEVAR }}"
-	   - name: useoutput
-	     id: step2
-        run: echo "output is ${{ needs.initialize_variable.outputs.o1 }}"
+      - name: useoutput
+        id: step2
+	run: echo "output is ${{ needs.initialize_variable.outputs.o1 }}"
+	
+	
