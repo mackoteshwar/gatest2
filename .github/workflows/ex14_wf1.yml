@@ -6,14 +6,25 @@ env:
 jobs:
   initialize_variable:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step3.outputs.o1 }}
     steps:
       - name: setvar
+		 id: step1
         run: echo "SOMEVAR=hello" >> $GITHUB_ENV	
       - name: usevar
-        run: echo "var is ${{ env.SOMEVAR }}"	
+        id: step2
+        run: echo "var is ${{ env.SOMEVAR }}"
+      - name: sendvar
+        id: step3
+        run: echo "::set-output name=o1::${{ env.SOMEVAR }}"	
   use_variable:
     runs-on: ubuntu-latest
     needs: initialize_variable
     steps:
       - name: useenvvar
+        id: step1
         run: echo "var is ${{ env.SOMEVAR }}"
+	   - name: useoutput
+	     id: step2
+        run: echo "output is ${{ needs.initialize_variable.outputs.o1 }}"
