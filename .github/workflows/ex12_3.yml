@@ -2,8 +2,8 @@ name: another workflow
 on:
   workflow_dispatch:
 jobs:
-	another_workflow_job:
-	  runs-on: ubuntu-latest
-     steps:
-       - name: msg
-         run: echo "running another_workflow_job"
+  another_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: msg
+        run: echo "running another_workflow_job"
